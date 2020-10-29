@@ -2,7 +2,7 @@
 <div>
   <a href="FILE HERE">Catalog Page</a>
   <?php echo " || "; ?>
-  <a href="FILE HERE">Orders/a>
+  <a href="FILE HERE">Orders</a>
   <?php echo " || "; ?>
   <a href="FILE HERE">Reception Desk</a>
   <?php echo " || "; ?>

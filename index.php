@@ -1,2 +1,2 @@
-<html><head> <?php include "include/index_header.php"; ?> </head>
+<html><head> <?php include "index_header.php"; ?> </head>
 <body></body></html>

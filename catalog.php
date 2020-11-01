@@ -56,7 +56,7 @@ if(array_key_exists('list', $_REQUEST)) {
           echo "$value[description]"; // product name here
         echo "</td>";
         
-	// button to see more detials, more informatino on the product
+	// button to see more details, more information on the product
         echo "<td>";
           echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/moredetails.php>"; // button for taking to details.php page
             $details = base64_encode(serialize($value));

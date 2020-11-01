@@ -22,4 +22,3 @@
     echo "Connection to database failed: " . $f->getMessage();
   }
 ?>
-?>

@@ -1,6 +1,6 @@
 <!--NavBar-->
 <div>
-  <a href="FILE HERE">Catalog Page</a>
+  <a href="catalog.php">Catalog Page</a>
   <?php echo " || "; ?>
   <a href="FILE HERE">Orders</a>
   <?php echo " || "; ?>

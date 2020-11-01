@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS inventory (
     productID	INT AUTO_INCREMENT,
     quantity	INT,
 
-	PRIMARY KEY (productID)
+    PRIMARY KEY (productID)
 );
 
 

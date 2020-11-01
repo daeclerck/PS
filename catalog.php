@@ -33,40 +33,64 @@ if(array_key_exists('list', $_REQUEST)) {
   echo "<h3> TEST TEST TEST </h3>";
   echo "<h3> TEST TEST TEST </h3>";
 
-  // test a query
-  $sql = "SELECT * FROM parts";
-  $query1 = $pdo->query($sql);
-  $rows = $query1->fetchALL(PDO::FETCH_ASSOC);
+  // get available quantity
+  $sql = "SELECT * FROM inventory";
+  $query = $pdo->query($sql);
+  $rows = $query->fetchALL(PDO::FETCH_ASSOC);
+
+  // get parts from legacy DB
+  $sql2 = "SELECT * FROM parts"; 
+  $query2 = $pdo2->query($sql2);
+  $rows2 = $query2->fetchALL(PDO::FETCH_ASSOC); 
 
   //use a table to print the results
   echo "<table width='40%'border=3, cellspacing=15,cellpadding=1>"; // table settings
-  echo '<tbody style="background-color:#FF726F">'; // coloring
+  echo '<tbody style="background-color:#51B9ED">'; // coloring
     echo "<tr>"; 			
       echo "<th>Product #</th>";
       echo "<th>Product Name</th>";
-      echo "<th>More information</th>";
+      echo "<th>Product Price ($)</th>";
+      echo "<th>Product Weight (lbs)</th>";
+      echo "<th>Available Quantity</th>";
+      echo "<th>Proceed to Cart</th>";
     echo "</tr>"; 				
-    foreach($rows as $value) { // displaying the database contents
+    foreach($rows2 as $key2 => $value2) { // displaying the database contents
       echo "<tr>"; //new row for the loop
         echo "<td>";
-          echo "$value[number]"; // the product number here
+          echo "$value2[number]"; // the product number here
         echo "</td>"; 
 
         echo "<td>";
-          echo "$value[description]"; // product name here
-        echo "</td>";
-        
-	// button to see more details, more information on the product
+          echo "$value2[description]"; // product name here
+	echo "</td>";
+	
+	echo "<td>";
+	  echo "$value2[price]"; // product price
+	echo "</td>";
+
+	echo "<td>";
+	  echo "$value2[weight]"; // product weight
+	echo "</td>";
+	
+	foreach($rows as $key => $value) {
+	  if($key == $key2) { // print quantity for matching parts	
+            echo "<td>";
+              echo "$value[quantity]";
+	    echo "</td>";
+	  }
+	}
+
+        // button to see more details, more information on the product
         echo "<td>";
-          echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/moredetails.php>"; // button for taking to details.php page
-            $details = base64_encode(serialize($value));
+          echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/details.php>"; // button for taking to details.php page
+            $details = base64_encode(serialize($value2));
             echo "<input type=hidden name=pnum value=$details/>";
             $cart_details = base64_encode(serialize($cart));
             echo "<input type=hidden name='cart' value=$cart_details/>";
-            echo "<input type=submit name='$value[number]' value='See More Information'/>";
+            echo "<input type=submit name='$value2[number]' value='View Cart Options'/>";
           echo "</form>"; 	
         echo "</td>"; 	
-      echo "</tr>"; 	
+        echo "</tr>"; 	
     }
   echo "</table>";
 }

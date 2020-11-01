@@ -15,8 +15,8 @@
 
   try{
     $dsn2 = "mysql:host=blitz.cs.niu.edu;dbname=csci467";
-    $pdo = new PDO($dsn2, $username2, $password2);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo2 = new PDO($dsn2, $username2, $password2);
+    $pdo2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
   catch(PDOexception $f) {
     echo "Connection to database failed: " . $f->getMessage();

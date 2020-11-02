@@ -1,6 +1,14 @@
 <html><head><title> Product System Catalog
 </title></head>
 <?php include "connection.php"; ?>
+<!-- CSS for table -->
+<style>
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+</style>
+
 <?php
 
 $cart = array();  // Users cart order
@@ -16,6 +24,7 @@ echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.p
   echo "<input type=submit name='button1' value='View Catalog'/>";
   echo "<input type=submit name='button2' value='Close Catelog'/>";
 echo "</form>"; // end of the form for openeing and closing the catalog 
+
 
 // fill the cart button
 echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>"; // cart button to be submitted to cart.php
@@ -43,8 +52,9 @@ if(array_key_exists('list', $_REQUEST)) {
   $query2 = $pdo2->query($sql2);
   $rows2 = $query2->fetchALL(PDO::FETCH_ASSOC); 
 
-  //use a table to print the results
-  echo "<table width='40%'border=3, cellspacing=15,cellpadding=1>"; // table settings
+  // use a table to print the results
+  echo "<font size='3' face='Arial Black'>";
+  echo "<table width='50%' border=4, cellspacing=10,cellpadding=1>"; // table settings
   echo '<tbody style="background-color:#51B9ED">'; // coloring
     echo "<tr>"; 			
       echo "<th>Product #</th>";
@@ -93,6 +103,7 @@ if(array_key_exists('list', $_REQUEST)) {
         echo "</tr>"; 	
     }
   echo "</table>";
+  echo "</font>";
 }
 ?>
 </html>

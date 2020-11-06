@@ -2,6 +2,7 @@
 </title></head>
 <?php
 include "connection.php";
+include "style.php";
 
   $cart = array();
 
@@ -17,8 +18,8 @@ include "connection.php";
   }
 
   if (isset($_POST['add_to_cart'])) {
-    $add_item = array("product"=>$chosen_item['number'], "quantity"=>$_POST['quantity']);
-    array_push($item, $add_item); // push any new item into array
+    $add_item = array("product"=>$item['number'], "quantity"=>$_POST['quantity']);
+    array_push($cart, $add_item); // push any new item into array
   }
 
   echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>";
@@ -44,14 +45,13 @@ include "connection.php";
     $numitems = $rows[0]['quantity'];
 
     echo "<img src=$item[pictureURL] style=width:500px;height=500px>";// table and ceting
-      echo "<br><br>";
-   
-    echo "<table border=3,cellspacing=10, cellpadding=3>";
-    echo '<tbody style="background-color:#51B9ED">';
+    echo "<br><br>";
+
+    echo "<table width='50%' border=4,cellspacing=10, cellpadding=1>";
       echo "<tr>";
         echo "<th>Product #</th>";  // These identify the table's column headers
         echo "<th>Product Description</th>";
-        echo "<th>Product Price ($)</th>";
+        echo "<th>Product Price</th>";
         echo "<th>Product Weight (lbs) </th>";
         echo "<th>Amount In Stock</th>";
       echo "</tr>";
@@ -59,7 +59,7 @@ include "connection.php";
       echo "<tr>";
         echo "<td>$item[number]</td>"; 					
         echo "<td>$item[description]</td>"; 	
-        echo "<td>$item[price]</td>"; 				
+        echo "<td>$$item[price]</td>"; 				
 	echo "<td>$item[weight]</td>"; 					
        	echo "<td>$numitems</td>"; 						
       echo "</tr>";
@@ -81,8 +81,8 @@ include "connection.php";
 
     if ($found == False) {
       echo "<h5>Quantity You Would Like To Purchase:</h5>"; // user can choose how much to purchase
-      echo "<input type=number name='quantity' min=1 max='$numitems'/>";
-      echo "<input type=submit name='addcart' value='Add To Your Cart'/>"; 
+      echo "<input type=number name='quantity' min=1 max='$numitems' required/>";
+      echo "<input type=submit name='add_to_cart' value='Add To Your Cart'/>"; 
     }
 
     else {

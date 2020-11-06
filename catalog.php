@@ -1,14 +1,6 @@
 <html><head><title> Product System Catalog
 </title></head>
-<?php include "connection.php"; ?>
-<!-- CSS for table -->
-<style>
-table, th, td {
-  border: 2px solid black;
-  border-collapse: collapse;
-}
-</style>
-
+<?php include "connection.php"; include "style.php" ?>
 <?php
 
 $cart = array();  // Users cart order
@@ -17,21 +9,28 @@ if(array_key_exists('cart', $_REQUEST)) { // check if cart exists
   $cart = unserialize(base64_decode($_REQUEST['cart'])); // decode the array
 }
 
-echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>"; // post to catalog page
-  $cart_item = base64_encode(serialize($cart)); // seriazlize the contenets again
-  echo "<input type=hidden name='cart' value=$cart_item/>";
-  echo "<input type=hidden name='list' value='filler'/>";
-  echo "<input type=submit name='button1' value='View Catalog'/>";
-  echo "<input type=submit name='button2' value='Close Catelog'/>";
-echo "</form>"; // end of the form for openeing and closing the catalog 
+if(!array_key_exists('list', $_REQUEST)) {
+  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>"; // post to catalog page
+    $cart_item = base64_encode(serialize($cart)); // seriazlize the contenets again
+    echo "<input type=hidden name='cart' value=$cart_item/>";
+    echo "<input type=hidden name='list' value='filler'/>";
+    echo "<input type=submit name='button1' value='View Catalog'/>";
+  echo "</form>"; // end of the form for openeing and closing the catalog 
+}
 
+if(isset($_POST['button1'])) {
+  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>";
+    echo "<input type=submit name='button2' value='Close Catelog'/>";
+  echo "</form>";
+}
 
 // fill the cart button
-echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>"; // cart button to be submitted to cart.php
+echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/cart.php>"; // cart button to be submitted to cart.php
   $cart_item_2 = base64_encode(serialize($cart)); // serialze the contents back to array
   echo "<input type=hidden name='cart' value=$cart_item_2/>"; 
   echo "<input type=submit name='button7' value='Your Cart'/>";
 echo "</form>"; // end of cart.php entry form
+
 
 if(isset($_POST['button2'])) {
   unset($_REQUEST['list']);
@@ -53,19 +52,17 @@ if(array_key_exists('list', $_REQUEST)) {
   $rows2 = $query2->fetchALL(PDO::FETCH_ASSOC); 
 
   // use a table to print the results
-  echo "<font size='3' face='Arial Black'>";
-  echo "<table width='50%' border=4, cellspacing=10,cellpadding=1>"; // table settings
-  echo '<tbody style="background-color:#51B9ED">'; // coloring
+  echo "<table width='50%' border=4, cellspacing=5,cellpadding=1>"; // table settings
     echo "<tr>"; 			
       echo "<th>Product #</th>";
       echo "<th>Product Name</th>";
-      echo "<th>Product Price ($)</th>";
+      echo "<th>Product Price</th>";
       echo "<th>Product Weight (lbs)</th>";
       echo "<th>Available Quantity</th>";
       echo "<th>Proceed to Cart</th>";
     echo "</tr>"; 				
     foreach($rows2 as $key2 => $value2) { // displaying the database contents
-      echo "<tr>"; //new row for the loop
+      echo "<tr>"; // new row for the loop
         echo "<td>";
           echo "$value2[number]"; // the product number here
         echo "</td>"; 
@@ -75,7 +72,7 @@ if(array_key_exists('list', $_REQUEST)) {
 	echo "</td>";
 	
 	echo "<td>";
-	  echo "$value2[price]"; // product price
+	  echo "$" . "$value2[price]"; // product price
 	echo "</td>";
 
 	echo "<td>";

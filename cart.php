@@ -59,7 +59,7 @@ if(!empty($items)) {
     $calcentry = array("pid"=>($centry["product"]),
                        "des"=>($pentry["description"]),
                        "qty"=>($centry["quantity"]),
-                       "tpr"=>($centry["quantity"] * $pentry["price"]),
+                       "tpr"=>"$".number_format(($centry["quantity"] * $pentry["price"]), "2"),
                        "twe"=>($centry["quantity"] * $pentry["weight"]),
                        "mqy"=>($numitems));
     array_push($calclist, $calcentry);
@@ -81,9 +81,7 @@ if(!empty($items)) {
     $addfees = 0;
   }
   else {
-    // $weightarray = $queryadd->fetchAll(PDO::FETCH_ASSOC);
-
-    //set the additional fees
+    // set the additional fees
     foreach($weightarray as $weightbracket) {
       if ($totalweight <= $weightbracket['bracket']) {
         $addfees = $weightbracket['charge'];
@@ -92,10 +90,10 @@ if(!empty($items)) {
     }
   }
 
-  $itemprices = round($itemprices, 2);
+  $itemprices = number_format(round($itemprices, 2), "2");
   $totalweight = round($totalweight, 2);
   $addfees = round($addfees, 2);
-  $finalprice = round(($itemprices + $addfees), 2);
+  $finalprice = number_format(round(($itemprices + $addfees), 2), "2");
 
   echo "<h1>Review Your Items</h1>";
 
@@ -104,7 +102,7 @@ if(!empty($items)) {
     echo "<th>Product ID</th>";
     echo "<th>Product Name</th>";
     echo "<th>Quantity Ordered</th>";
-    echo "<th>Added Price ($)</th>";
+    echo "<th>Added Price</th>";
     echo "<th>Added Weight (lbs)</th>";
     echo "<th>Change Quantity</th>";
     echo "<th>Delete?</th>";

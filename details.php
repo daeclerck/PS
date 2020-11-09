@@ -14,7 +14,7 @@ include "style.php";
     $item = unserialize(base64_decode($_REQUEST['pnum'])); // get the part number of item to display
   }
   else { // display part number, description, price, weight and picture
-    $item = array("number"=>"-1", "description"=>"NO ITEM CHOSEN", "price"=>"-1", "weight"=>"-1", "https://base.imgix.net/files/base/ebm/mhlnews/image/2019/03/mhlnews_4187_out_stock_1.png?auto=format&fit=crop&h=432&w=768"=>"pictureURL");
+    $item = array("number"=>"-1", "description"=>"NO ITEM CHOSEN", "price"=>"-1", "weight"=>"-1", "i.imgur.com/9QejC3U.jpg"=>"pictureURL");
   }
 
   if (isset($_POST['add_to_cart'])) {
@@ -44,7 +44,8 @@ include "style.php";
     $rows = $query->fetchAll(PDO::FETCH_ASSOC);
     $numitems = $rows[0]['quantity'];
 
-    echo "<img src=$item[pictureURL] style=width:500px;height=500px>";// table and ceting
+    echo "<img src=$item[pictureURL] style=width:500px;height=500px>";
+    echo "ITEM PIC URL IS = " . print_r($item);
     echo "<br><br>";
 
     echo "<table width='50%' border=4,cellspacing=10, cellpadding=1>";

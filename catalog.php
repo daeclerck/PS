@@ -10,7 +10,7 @@ if(array_key_exists('cart', $_REQUEST)) { // check if cart exists
 }
 
 if(!array_key_exists('list', $_REQUEST)) {
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>"; // post to catalog page
+  echo "<form method=post action=catalog.php>"; // post to catalog page
     $cart_item = base64_encode(serialize($cart)); // seriazlize the contenets again
     echo "<input type=hidden name='cart' value=$cart_item/>";
     echo "<input type=hidden name='list' value='filler'/>";
@@ -19,20 +19,20 @@ if(!array_key_exists('list', $_REQUEST)) {
 }
 
 if(isset($_POST['button1'])) {
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>";
-    echo "<input type=submit name='button2' value='Close Catelog'/>";
+  echo "<form method=post action=catalog.php>";
+    echo "<input type=submit name='closecat' value='Close Catelog'/>";
   echo "</form>";
 }
 
 // fill the cart button
-echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/cart.php>"; // cart button to be submitted to cart.php
+echo "<form method=post action=cart.php>"; // cart button to be submitted to cart.php
   $cart_item_2 = base64_encode(serialize($cart)); // serialze the contents back to array
   echo "<input type=hidden name='cart' value=$cart_item_2/>"; 
   echo "<input type=submit name='button7' value='Your Cart'/>";
 echo "</form>"; // end of cart.php entry form
 
 
-if(isset($_POST['button2'])) {
+if(isset($_POST['closecat'])) {
   unset($_REQUEST['list']);
 }
 
@@ -89,7 +89,7 @@ if(array_key_exists('list', $_REQUEST)) {
 
         // button to see more details, more information on the product
         echo "<td>";
-          echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/details.php>"; // button for taking to details.php page
+          echo "<form method=post action=details.php>"; // button for taking to details.php page
             $details = base64_encode(serialize($value2));
             echo "<input type=hidden name=pnum value=$details/>";
             $cart_details = base64_encode(serialize($cart));
@@ -104,7 +104,7 @@ if(array_key_exists('list', $_REQUEST)) {
 }
 
 // return index
-echo "<form method=post action =http://students.cs.niu.edu/~z1877438/PS/index.php>";
+echo "<form method=post action=index.php>";
   echo "<input class=home type=submit name'gohome' value='Return Home'/>";
 echo "</form>";
 ?>

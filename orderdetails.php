@@ -19,7 +19,7 @@ if (array_key_exists('sql', $_REQUEST)) {
 
 $toarray = explode(" ", $sql1);
 
-echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/orders.php>"; // submit data to orders.php using POST method
+echo "<form method=post action=orders.php>"; // submit data to orders.php using POST method
   $order_array= base64_encode(serialize($toarray)); // re-serialize items to an array
   echo "<input type=hidden name='sql' value=$order_array/>";
   echo "<input type=hidden name='viewall' value='View All Orders'/>";

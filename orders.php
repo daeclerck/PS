@@ -34,22 +34,22 @@ else if (array_key_exists('searchprice', $_REQUEST)) {
     
 // checking if the array exists already
 if (!array_key_exists('viewall', $_REQUEST) && !array_key_exists('search', $_REQUEST)) {
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/orders.php>";
+  echo "<form method=post action=orders.php>";
     echo "<input type=submit name='viewall' value='View All Orders'/>"; // view the values
   echo "</form>";
 
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/weightcharge.php>";
+  echo "<form method=post action=weightcharge.php>";
     echo "<input type=submit name='goweights' value='Adjust Charges'/>"; // view the charges
   echo "</form>";
 }
     
 else {
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/orders.php>";
+  echo "<form method=post action=orders.php>";
     echo "<input type=submit name='closeall' value='Close Orders'/>"; // close the orders
   echo "</form>";
 
   // call the orders.php
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/orders.php>";
+  echo "<form method=post action=orders.php>";
     echo "<input type=submit name='searchdate' value='Search Dates Between'/>"; 
     echo "<input type=text name='lowerdate' placeholder='Lower Bound' required/>"; 
     echo "<input type=text name='higherdate' placeholder='Upper Bound' required/>";
@@ -57,14 +57,14 @@ else {
   echo "</form>";
 
   // code required for the search status
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/orders.php>";
+  echo "<form method=post action=orders.php>";
     echo "<input type=submit name='searchstatus' value='Search by Status of      '/>";
     echo "<input type=text name='status' placeholder='Status' required/>";
     echo "<input type=hidden name='search' value='S'/>";
   echo "</form>";
 
   // code required for the searching of the price
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/orders.php>";
+  echo "<form method=post action=orders.php>";
     echo "<input type=submit name='searchprice' value='Search Prices Between'/>";
     echo "<input type=text name='lowerprice' placeholder='Lower Bound' required/>";
     echo "<input type=text name='higherprice' placeholder='Upper Bound' required/>";
@@ -131,7 +131,7 @@ else {
       echo "</td>";
 
       echo "<td>";
-        echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/orderdetails.php>";
+        echo "<form method=post action=orderdetails.php>";
           echo "<input type=hidden name='oid' value=$order[ordersID]/>";
           $order_array= base64_encode(serialize($toarray));
           echo "<input type=hidden name='sql' value=$order_array/>";
@@ -144,7 +144,7 @@ else {
 }       
 
 // return to index
-echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/index.php>";
+echo "<form method=post action=index.php>";
   echo "<input class=home type=submit name'gohome' value='Return Home'/>";
 echo "</form>";
 ?>    

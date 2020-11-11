@@ -14,18 +14,18 @@ if(isset($_POST['update_quantity'])) {
   $items[$index]['quantity'] = $quantity;
 }
 
-echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>"; 
+echo "<form method=post action=catalog.php>"; 
   $cart_item = base64_encode(serialize($items));
   echo "<input type=hidden name='cart' value=$cart_item/>";
   echo "<input type=submit name='button5' value='Return To The Catalog'/>"; // return back to catalog page 
 echo "</form>";
 
-echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/cart.php>";
+echo "<form method=post action=cart.php>";
   echo "<input type=submit name='button8' value='Clear Your Cart'/>"; // cleaning the cart and resubmit to cart.php
 echo "</form>";
 
 if(array_key_exists('pnum', $_REQUEST)) {
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/details.php>";
+  echo "<form method=post action=details.php>";
     echo "<input type=hidden name='pnum' value=$_REQUEST[pnum]/>";
     $cart_items2 = base64_encode(serialize($items));
     echo "<input type=hidden name='cart' value=$cart_items2/>";
@@ -120,7 +120,7 @@ if(!empty($items)) {
       }
 
       echo "<td>";
-      echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/cart.php>"; // moving to cart
+      echo "<form method=post action=cart.php>"; // moving to cart
 
       if (array_key_exists('pnum', $_REQUEST)) { // current cart
         echo "<input type=hidden name='pnum' value=$_REQUEST[pnum]/>";
@@ -152,7 +152,7 @@ if(!empty($items)) {
       echo "</form>";
       echo "</td>";
       echo "<td>";
-      echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/details.php>";
+      echo "<form method=post action=details.php>";
         $cart_item5 = base64_encode(serialize($plist[$count2]));
         echo "<input type=hidden name='pnum' value=$cart_item5/>";
         $cart_item6 = base64_encode(serialize($items));
@@ -184,7 +184,7 @@ if(!empty($items)) {
 
     echo "<h2>Ready to Order? Continue to checkout.</h2>";
     // moving to the checkout page and pulling everything over
-    echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/checkout.php>";
+    echo "<form method=post action=checkout.php>";
 
     $final_cart = base64_encode(serialize($items));
       echo "<input type=hidden name='cart' value=$final_cart/>";

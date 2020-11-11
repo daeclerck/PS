@@ -22,13 +22,13 @@ include "style.php";
     array_push($cart, $add_item); // push any new item into array
   }
 
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>";
+  echo "<form method=post action=catalog.php>";
     $item_array= base64_encode(serialize($cart)); // re-serialize items in cart
     echo "<input type=hidden name='cart' value=$item_array/>";
     echo "<input type=submit name='button3' value='Return to Catalog'/>";  // go back to product catalog
   echo "</form>";
 
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/cart.php>"; // return to cart if user adds an item and wants to go back to cart
+  echo "<form method=post action=cart.php>"; // return to cart if user adds an item and wants to go back to cart
     echo "<input type=hidden name='pnum' value=$_REQUEST[pnum]/>";
     $item_array= base64_encode(serialize($cart)); // re-serialize the cart
     echo "<input type=hidden name='cart' value=$item_array/>";
@@ -67,7 +67,7 @@ include "style.php";
 ?>
 
 <?php
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/details.php>"; // submit data using POST method
+  echo "<form method=post action=details.php>"; // submit data using POST method
     echo "<input type=hidden name='pnum' value=$_REQUEST[pnum]/>"; // show valid part number
     echo "<input type=hidden name='cart' value=$_REQUEST[cart]/>";
 
@@ -95,9 +95,3 @@ include "style.php";
 
 </html>
 
-
-<footer>
-
-CSCI 467
-
-</footer>

@@ -8,7 +8,7 @@
   <?php echo " || "; ?>
   <a href="warehouse.php">Warehouse</a>
   <?php echo " || "; ?>
-  <a href="FILE HERE">Invoice</a>
+  <a href="invoice.php">Invoice</a>
   <?php echo " || "; ?>
   <a href="FILE HERE">Admin</a>
 </div>

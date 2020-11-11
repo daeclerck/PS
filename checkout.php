@@ -35,14 +35,14 @@ if(array_key_exists('placeorder', $_REQUEST)) {
   $cexp = $_REQUEST['cexp'];
 }    
 
-echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/cart.php>"; // cart button to submit the cart.php
+echo "<form method=post action=cart.php>"; // cart button to submit the cart.php
   $cart_item = base64_encode(serialize($items)); // serializing the array
   echo "<input type=hidden name='cart' value=$cart_item/>";
   echo "<input type=submit name='backtocart' value='Go Back To Your Cart'/>";
 echo "</form>";    
     
 if (!(array_key_exists('placeorder', $_REQUEST))) {
-  echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/checkout.php>"; // on checkout page
+  echo "<form method=post action=checkout.php>"; // on checkout page
     $cart_item2 = base64_encode(serialize($items)); // serializing the array
     echo "<input type=hidden name='cart' value=$cart_item2/>";
     echo "<input type=hidden name='itemprices' value=$itemprices/>";
@@ -221,7 +221,7 @@ else {
     echo "An email has been sent to you at $email.";
 
     $items = array();
-    echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/catalog.php>";
+    echo "<form method=post action=catalog.php>";
       echo "<input type=submit name='gotocatelog' value='Clear And Go Back To Catalog'/>";
     echo "</form>";
   }  

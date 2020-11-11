@@ -53,7 +53,7 @@ foreach($mainarray as $num) {
     echo "</td>";
 
     echo "<td>";
-      echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/desk.php>";
+      echo "<form method=post action=desk.php>";
         echo "<input type=number name='quantity' min=1 required/>";
         echo "<input type=hidden name='pnmbr' value=$num[productID]/>";
         echo "<input type=submit name='change' value='Order'/>";
@@ -64,7 +64,7 @@ foreach($mainarray as $num) {
 }  
 
 // return to index
-echo "<form method=post action =http://students.cs.niu.edu/~z1877438/PS/index.php>";
+echo "<form method=post action=index.php>";
   echo "<input class=home type=submit name'gohome' value='Return Home'/>";
 echo "</form>";
 ?>

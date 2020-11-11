@@ -4,15 +4,18 @@
 <?php include "connection.php"; include "style.php";
         
 //try adding form to select order id:
-echo '<form action="warehouse.php" method="post">';
-  echo 'Order ID: <input type=text name=orderid id=orderid required><br>'; //input box for order id number
-  echo '<br><input type="submit" name="submit" value="Submit"><br>'; //submit button
-echo '</form>';    
+echo "<form action=warehouse.php method=post>";
+  echo "Order ID: <input type=text name=orderid id=orderid required><br>"; //input box for order id number
+  echo "<br><input type=submit name=submit value=Submit><br>"; //submit button
+echo "</form>";    
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && strpos($_POST['orderid'], ' ') == false) { // fail if there is a space in input string
   $orderid = $_POST['orderid'];
 
-  $sql = $pdo->query('SELECT * FROM ordereditems WHERE orderID = ' . $orderid); 
+  $sql = "SELECT * FROM ordereditems WHERE orderID = $orderid";
+  $query = $pdo->query($sql);
+  $match = $query->fetchALL(PDO::FETCH_ASSOC);
+   	 
   echo "<table border='5', cellspacing=5, cellpadding=5>";
   echo "<th>Order ID</th>";
   echo "<th>Product Name</th>";
@@ -20,11 +23,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && strpos($_POST['orderid'], ' ') == fal
   echo "<th>Quantity</th>";
 
   // displaying the information from the query in the table
-  while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+  foreach($match as $row) {
     $productid = $row['productID'];
-    $sqldesc = $pdo2->query('SELECT description FROM parts WHERE number = ' . $productid);
-
-    while($description = $sqldesc->fetch(PDO::FETCH_ASSOC)) {
+    $sqldesc = "SELECT description FROM parts WHERE number = $productid";
+    $querydesc = $pdo2->query($sqldesc);
+    $matchdesc = $querydesc->fetchALL(PDO::FETCH_ASSOC);
+    foreach($matchdesc as $description) {
       echo "<tr>";
         echo "<td>$row[orderID]</td>"; //display orderID
         echo "<td>$description[description]</td>"; //display description
@@ -36,5 +40,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && strpos($_POST['orderid'], ' ') == fal
   echo '</table>';
 }
 
+// return index
+echo "<form method=post action=index.php>";
+  echo "<input class=home type=submit name'gohome' value='Return Home'/>";
+echo "</form>";
 ?>
 </html>

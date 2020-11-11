@@ -10,5 +10,5 @@
   <?php echo " || "; ?>
   <a href="invoice.php">Invoice</a>
   <?php echo " || "; ?>
-  <a href="FILE HERE">Admin</a>
+  <a href="weight.php">Admin</a>
 </div>

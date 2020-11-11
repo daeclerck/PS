@@ -4,9 +4,9 @@
   <?php echo " || "; ?>
   <a href="orders.php">Orders</a>
   <?php echo " || "; ?>
-  <a href="FILE HERE">Reception Desk</a>
+  <a href="desk.php">Receiving Desk</a>
   <?php echo " || "; ?>
-  <a href="FILE HERE">Warehouse</a>
+  <a href="warehouse.php">Warehouse</a>
   <?php echo " || "; ?>
   <a href="FILE HERE">Invoice</a>
   <?php echo " || "; ?>

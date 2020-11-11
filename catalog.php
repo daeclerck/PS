@@ -103,9 +103,9 @@ if(array_key_exists('list', $_REQUEST)) {
   echo "</font>";
 }
 
-echo "<br><br><br><br>";
+// return index
 echo "<form method=post action =http://students.cs.niu.edu/~z1877438/PS/index.php>";
-  echo "<input type=submit name'gohome' value='Return Home'/>";
+  echo "<input class=home type=submit name'gohome' value='Return Home'/>";
 echo "</form>";
 ?>
 </html>

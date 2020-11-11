@@ -207,7 +207,7 @@ else {
       $newquantity = ($foundquantity - $quantity);
 
       $sqlinv = "UPDATE inventory SET quantity = $newquantity WHERE productID = $refid";
-      $queryinv = $pdo1->query($sqlinv);
+      $queryinv = $pdo->query($sqlinv);
     }
 
     // send email

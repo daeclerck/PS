@@ -1,3 +1,4 @@
+<!-- Needs Revisions -->
 <html><head><title>Orders
 </title></head>
 <h1> Orders Page: </h1>
@@ -8,7 +9,7 @@ if (array_key_exists('searchdate', $_REQUEST)) {
   $lowval = date('Y-m-d', strtotime($_REQUEST['lowerdate']));   // include the dates
   $highval = date('Y-m-d', strtotime($_REQUEST['higherdate'])); // include the dates
 
-  $statement = "SELECT ordersID, custid, finalprice, date, status FROM orders
+  $statement = "SELECT ordersID, custID, finalprice, date, status FROM orders
                 WHERE date BETWEEN \"$lowval\" AND \"$highval\"";  
   $_POST['sql'] = $statement;
 }
@@ -16,7 +17,7 @@ if (array_key_exists('searchdate', $_REQUEST)) {
 // handle search for status
 else if (array_key_exists('searchstatus', $_REQUEST)) {
   $statusval = $_REQUEST['status'];
-  $statement = "SELECT ordersID, custid, finalprice, date, status FROM orders
+  $statement = "SELECT ordersID, custID, finalprice, date, status FROM orders
                 WHERE status = \"$statusval\"";
   $_POST['sql'] = $statement;
 }  
@@ -26,7 +27,7 @@ else if (array_key_exists('searchprice', $_REQUEST)) {
   $lownum = round(floatval($_REQUEST['lowerprice']), 2);
   $highnum = round(floatval($_REQUEST['higherprice']), 2);
 
-  $statement = "SELECT ordersID, custid, finalprice, date, status FROM orders
+  $statement = "SELECT ordersID, custID, finalprice, date, status FROM orders
                 WHERE finalprice BETWEEN $lownum AND $highnum";
   $_POST['sql'] = $statement;
 }    
@@ -71,7 +72,7 @@ else {
   echo "</form>";
     
   // the sql statement to gather the appropriate information
-  $sql1 = "SELECT ordersID, custid, finalprice, date, status FROM orders";
+  $sql1 = "SELECT ordersID, custID, finalprice, date, status FROM orders";
       
   if(array_key_exists('sql', $_POST) && array_key_exists('sql', $_POST)) {
     $sql1 = $_POST['sql'];
@@ -114,7 +115,7 @@ else {
       echo "</td>";
 
       echo "<td>";
-        echo "$order[custid]";
+        echo "$order[custID]";
       echo "</td>";
 
       echo "<td>";
@@ -142,9 +143,9 @@ else {
   echo "</table>";
 }       
 
-echo "<br><br><br><br>";
+// return to index
 echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/index.php>";
-  echo "<input type=submit name'gohome' value='Return Home'/>";
+  echo "<input class=home type=submit name'gohome' value='Return Home'/>";
 echo "</form>";
 ?>    
 </html>

@@ -90,10 +90,11 @@ if(!empty($items)) {
     }
   }
 
-  $itemprices = number_format(round($itemprices, 2), "2");
+  $itemprices = round($itemprices, 2);
+  $totalprice = number_format(round($itemprices, 2), "2");
   $totalweight = round($totalweight, 2);
   $addfees = round($addfees, 2);
-  $finalprice = number_format(round(($itemprices + $addfees), 2), "2");
+  $finalprice = number_format(round(intval($itemprices) + $addfees, 2), "2");
 
   echo "<h1>Review Your Items</h1>";
 
@@ -174,7 +175,7 @@ if(!empty($items)) {
       echo "<th>Final Price</th>";
     echo "</tr>";
     echo "<tr>";
-      echo "<td>$$itemprices</td>";
+      echo "<td>$$totalprice</td>";
       echo "<td>$totalweight</td>";
       echo "<td>$$addfees</td>";
       echo "<td>$$finalprice</td>";

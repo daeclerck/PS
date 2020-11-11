@@ -1,9 +1,10 @@
+<!-- Needs Revisions -->
 <html><head><title>Order Details
 </title></head>
 <h1> Order Details: </h1>
 <?php include "connection.php"; include "style.php";
     
-$sql1 = "SELECT ordersID, custid, finalprice, date, status FROM orders";
+$sql1 = "SELECT ordersID, custID, finalprice, date, status FROM orders";
 
 if (array_key_exists('sql', $_REQUEST)) {
   $sql1 = "";
@@ -37,7 +38,7 @@ $queryord = $pdo->query($sqlord);
 $arrayord = $queryord->fetchAll(PDO::FETCH_ASSOC); // fetch all orders with this id
 
 $order = $arrayord[0];
-$customer = $arrayord[0]['custid']; // pull up customer with this id
+$customer = $arrayord[0]['custID']; // pull up customer with this id
 
 echo "<h3>Order Details</h3>";                                
 echo "<table border=3>";                                      

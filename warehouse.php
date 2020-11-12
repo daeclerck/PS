@@ -5,11 +5,11 @@
         
 //try adding form to select order id:
 echo "<form action=warehouse.php method=post>";
-  echo "Order ID: <input type=text name=orderid id=orderid required><br>"; //input box for order id number
+  echo "<label>Order ID:</label><input type=text name=orderid id=orderid required><br>"; //input box for order id number
   echo "<br><input type=submit name=submit value=Submit><br>"; //submit button
 echo "</form>";    
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && strpos($_POST['orderid'], ' ') == false) { // fail if there is a space in input string
+if($_SERVER['REQUEST_METHOD'] == 'POST' && is_numeric($_POST['orderid'])) { // fail if there is a space in input string
   $orderid = $_POST['orderid'];
 
   $sql = "SELECT * FROM ordereditems WHERE orderID = $orderid";

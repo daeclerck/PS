@@ -1,5 +1,5 @@
 <html><head><title> Product System Catalog
-</title></head>
+</title></head><body>
 <?php include "connection.php"; include "style.php" ?>
 <?php
 
@@ -59,7 +59,7 @@ if(array_key_exists('list', $_REQUEST)) {
       echo "<th>Product Price</th>";
       echo "<th>Product Weight (lbs)</th>";
       echo "<th>Available Quantity</th>";
-      echo "<th>Proceed to Cart</th>";
+      echo "<th>Add to cart</th>";
     echo "</tr>"; 				
     foreach($rows2 as $key2 => $value2) { // displaying the database contents
       echo "<tr>"; // new row for the loop
@@ -108,5 +108,6 @@ echo "<form method=post action=index.php>";
   echo "<input class=home type=submit name'gohome' value='Return Home'/>";
 echo "</form>";
 ?>
+</body>
 </html>
   

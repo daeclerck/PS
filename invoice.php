@@ -1,15 +1,15 @@
-<html><head><title>Order Details
+<html><head><title>Invoice Details
 </title></head>
 <h1> Invoice View </h1>
 <h2> Enter an Order ID </h2>
 <?php include "connection.php"; include "style.php";
   
 echo "<form action=invoice.php method=post>";
-  echo "Order ID: <input type=text name=orderid id=orderid><br>"; 
+  echo "<label>Order ID:</label><input type=text name=orderid id=orderid><br>"; 
   echo "<br><input type=submit name=submit value=Submit><br>"; 
 echo "</form>";
 
-echo "<h2> Order Details:</h2>";
+echo "<h2>Order Details:</h2>";
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
   $orderid = $_POST['orderid'];
   $sql = "SELECT * FROM ordereditems WHERE orderID = '$orderid'";

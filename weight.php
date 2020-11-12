@@ -1,12 +1,8 @@
-<html><head><title>Admin Page
+<html><head><title>Weight Page
 </title></head>
 
 <h1> Weight Brackets</h1>
 <?php include "connection.php"; include "style.php";
-
-echo "<form method=post action=orders.php>"; 
-  echo "<input type=submit name='backorder' value='Go Back to Orders Page'/>";
-echo "</form>";
 
 echo "<h2>Adjusting Weight Bracket and Charges</h2>";    
     

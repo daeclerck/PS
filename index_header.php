@@ -1,14 +1,6 @@
 <!--NavBar-->
 <div>
-  <a href="catalog.php">Catalog Page</a>
-  <?php echo " || "; ?>
-  <a href="orders.php">Orders</a>
-  <?php echo " || "; ?>
-  <a href="desk.php">Receiving Desk</a>
-  <?php echo " || "; ?>
-  <a href="warehouse.php">Warehouse</a>
-  <?php echo " || "; ?>
-  <a href="invoice.php">Invoice</a>
-  <?php echo " || "; ?>
-  <a href="weight.php">Admin</a>
+  <a class="button" style="vertical-align:middle" href="catalog.php"><span>Catalog Page</span></a>
+  <br><br><br>
+  <a class="button" style="vertical-align:middle" href="emp.php"><span>Employee Options</span></a>
 </div>

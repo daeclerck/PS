@@ -1,5 +1,5 @@
 <html><head><title>Your Cart
-</title></head>
+</title></head><body>
 <?php include "connection.php"; include "style.php"; 
 
 $items = array(); // create the array
@@ -135,7 +135,7 @@ if(!empty($items)) {
       echo "</td>";
 
       echo "<td>";
-      echo "<form method=post action=http://students.cs.niu.edu/~z1877438/PS/cart.php>";
+      echo "<form method=post action=cart.php>";
       if (array_key_exists('pnum', $_REQUEST)) {
         echo "<input type=hidden name='pnum' value=$_REQUEST[pnum]/>";
       }
@@ -200,5 +200,6 @@ if(!empty($items)) {
     echo "Your Cart is empty";
   }
 ?>
+</body>
 </html>
 

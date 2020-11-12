@@ -50,19 +50,19 @@ if (!(array_key_exists('placeorder', $_REQUEST))) {
     echo "<input type=hidden name='addfees' value=$addfees/>";
     echo "<input type=hidden name='finalprice' value=$finalprice/>";
     echo "<h1>Order Checkout: </h1>";
-    echo "Your Name: ";
+    echo "<label>Your Name: </label>";
     echo "<input type=text name='name' placeholder='Your Name Here' required/> <br><br>";
-    echo "Your Email: ";
+    echo "<label>Your Email: </label>";
     echo "<input type=text name='email' placeholder='Your Email Here' required/> <br><br>";
-    echo "Your Address: ";
+    echo "<label>Your Address: </label>";
     echo "<input type=text name='address' placeholder='Your Address Here' required/> <br><br>";
-    echo "Credit Card Number: ";
+    echo "<label>Credit Card Number: </label>";
     echo "<input type=text name='cnumber' placeholder='Correct Format' required/> <br>";
-    echo '<small>(The format is "6011 1234 4321 1234")</small>';
+    echo '<label><small>(The format is "6011 1234 4321 1234")</small></label>';
     echo "<br><br>";
-    echo "Card Expiration Date: ";
+    echo "<label>Card Expiration Date: </label>";
     echo "<input type=text name='cexp' placeholder='Expiration Date' required/> <br>";
-	echo '<small> (The format is "MM/YYYY")</small><br>';
+    echo '<label><small> (The format is "MM/YYYY")</small></label><br>';
     echo "<br> <input type=submit name='placeorder' value='Confirm Your Details'/>";
   echo "</form>";
 }    
@@ -94,7 +94,7 @@ else {
   // place the order into the orders table
   $orderstatus = 'A';
   $date = date("Y-m-d");
-  $sql4 = "INSERT INTO orders (custid, status, totalweight, addfees, totalprice, finalprice, date)
+  $sql4 = "INSERT INTO orders (custID, status, totalweight, addfees, totalprice, finalprice, date)
            VALUES ('$customerid', '$orderstatus', '$totalweight', '$addfees', '$itemprices', '$finalprice', '$date')";
   $query4 = $pdo->query($sql4);
 

@@ -86,7 +86,7 @@ include "style.php";
     }
 
     else {
-      echo "You added this item to your cart. Please edit your decision there."; // if user would like to edit their cart
+      echo "<label>You added this item to your cart. Please edit your decision there.</label>"; // if user would like to edit their cart
     }
   echo "</form>";
 

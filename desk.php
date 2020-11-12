@@ -1,5 +1,5 @@
 <html><head><title>Receiving Desk
-</title></head>
+</title></head><body>
 <h1> Receiving Desk </h1>
 <?php include "connection.php"; include "style.php";
  
@@ -68,5 +68,5 @@ echo "<form method=post action=index.php>";
   echo "<input class=home type=submit name'gohome' value='Return Home'/>";
 echo "</form>";
 ?>
-
+</body>
 </html>

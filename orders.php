@@ -38,7 +38,7 @@ if (!array_key_exists('viewall', $_REQUEST) && !array_key_exists('search', $_REQ
     echo "<input type=submit name='viewall' value='View All Orders'/>"; // view the values
   echo "</form>";
 
-  echo "<form method=post action=weightcharge.php>";
+  echo "<form method=post action=admin.php>";
     echo "<input type=submit name='goweights' value='Adjust Charges'/>"; // view the charges
   echo "</form>";
 }

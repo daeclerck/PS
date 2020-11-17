@@ -197,7 +197,7 @@ if(!empty($items)) {
   }
 
   else {
-    echo "Your Cart is empty";
+    echo "<label>Your Cart is empty</label>";
   }
 ?>
 </body>
